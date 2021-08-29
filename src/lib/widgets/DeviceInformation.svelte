@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { DeviceCfg } from '$lib/types';
   import WidgetCard from '$lib/components/ui/WidgetCard.svelte';
-  import StatusList from '../ui/StatusList.svelte';
+  import StatusList from '../components/ui/StatusList.svelte';
 
   export let devices: DeviceCfg[];
   let wirelessTypes = ['802.11', '802.11n', '802.11ac'];

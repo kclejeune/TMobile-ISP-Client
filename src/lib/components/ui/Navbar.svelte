@@ -17,7 +17,7 @@
 <div class="z-50 h-full shadow bg-base-200 drawer">
   <input id="my-drawer-3" type="checkbox" bind:checked={open} class="drawer-toggle" />
   <div class="flex flex-col drawer-content">
-    <div class="fixed top-0 z-50 w-full navbar bg-neutral-focus">
+    <div class="fixed top-0 z-50 w-full navbar bg-base-300">
       <div class="flex-none sm:hidden">
         <label for="my-drawer-3" class="btn btn-square btn-ghost">
           <svg

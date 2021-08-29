@@ -1,8 +1,8 @@
 <script lang="ts">
   import WidgetCard from '$lib/components/ui/WidgetCard.svelte';
-  import StatusList from '../ui/StatusList.svelte';
+  import StatusList from '$lib/components/ui/StatusList.svelte';
+  import OnlineIndicator from '$lib/components/ui/OnlineIndicator.svelte';
 
-  export let description: string;
   export let serialNumber: string;
   export let softwareVersion: string;
   export let hardwareVersion: string;
@@ -16,7 +16,10 @@
   ];
 </script>
 
-<WidgetCard title="Gateway Information" online={true}>
+<WidgetCard title="Gateway Information">
+  <div slot="title">
+    <OnlineIndicator online={true} />
+  </div>
   <div slot="body">
     <StatusList items={statusItems} />
   </div>

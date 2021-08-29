@@ -1,24 +1,23 @@
-<script lang="ts">
-  type StatusItem = {
+<script lang="ts" context="module">
+  export type StatusItem = {
     svgIcon?: string;
     name: string;
-    value: string;
+    value: any;
   };
+</script>
+
+<script lang="ts">
   export let items: StatusItem[] = [];
 </script>
 
-{#if items.length > 0}
-  <ul>
-    {#each items as { svgIcon, name, value }}
-      <li class="flex justify-between">
-        <span class="inline-flex">
-          {#if svgIcon}
-            <span class="mx-1 mr-2">{@html svgIcon}</span>
-          {/if}
-          <span class="mx-1">{name}:</span>
-        </span>
-        <span class="font-semibold">{value}</span>
-      </li>
-    {/each}
-  </ul>
-{/if}
+{#each items as { svgIcon, name, value }}
+  <div class="flex justify-between">
+    <span class="inline-flex">
+      {#if svgIcon}
+        <span class="mr-2">{@html svgIcon}</span>
+      {/if}
+      <span>{name}:</span>
+    </span>
+    <span class="font-semibold">{value}</span>
+  </div>
+{/each}

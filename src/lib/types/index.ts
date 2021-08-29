@@ -88,31 +88,26 @@ export interface EthernetStat {
   stat: Stat;
 }
 
-export interface Cell5GStat {
-  PhysicalCellID: string;
-  SNRCurrent: number;
-  RSRPCurrent: number;
-  RSRPStrengthIndexCurrent: number;
-  RSRQCurrent: number;
+export interface Cell5GStat extends CellRadioStat {
   Downlink_NR_ARFCN: number;
-  SignalStrengthLevel: number;
-  Band: string;
 }
 
 export interface Cell5GStatsCfg {
   stat: Cell5GStat;
 }
 
-export interface Cell4GStat {
+export interface CellRadioStat {
   PhysicalCellID: string;
-  RSSICurrent: number;
   SNRCurrent: number;
   RSRPCurrent: number;
   RSRPStrengthIndexCurrent: number;
   RSRQCurrent: number;
-  DownlinkEarfcn: number;
   SignalStrengthLevel: number;
   Band: string;
+}
+export interface Cell4GStat extends CellRadioStat {
+  RSSICurrent: number;
+  DownlinkEarfcn: number;
 }
 
 export interface CellLTEStatsCfg {
