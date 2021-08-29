@@ -9,7 +9,6 @@
   export let uptime: string;
 
   $: statusItems = [
-    { name: 'Device Name', value: description },
     { name: 'Serial Number', value: serialNumber },
     { name: 'Software Version', value: softwareVersion },
     { name: 'Hardware Version', value: hardwareVersion },
