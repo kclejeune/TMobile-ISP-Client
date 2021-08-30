@@ -19,15 +19,29 @@
 <script lang="ts">
   import H1 from '$lib/components/ui/H1.svelte';
   import StatusList from '$lib/components/ui/StatusList.svelte';
+  import Table from '$lib/components/ui/Table.svelte';
   import WidgetCard from '$lib/components/ui/WidgetCard.svelte';
 
   export let devices: DeviceCfg[];
   function cleanHostname(hostname: string) {
     return hostname.replace(/.*unknown.*/gi, 'Unknown');
   }
+  let columns: string[] = ['Hostname', 'IP', 'MAC', 'Interface', 'Source'];
+  let data = devices.map((device) => {
+    return {
+      Hostname: cleanHostname(device.HostName),
+      IP: device.IPAddress,
+      MAC: device.MACAddress,
+      Interface: device.InterfaceType,
+      Source: device.AddressSource,
+    };
+  });
 </script>
 
 <H1>Devices</H1>
+<!-- <div class="container mx-auto">
+  <Table {data} {columns} />
+</div> -->
 <div class="grid grid-cols-1 gap-4 m-4 md:grid-cols-2 lg:grid-cols-3">
   {#each devices as device}
     <div class="col-auto">
