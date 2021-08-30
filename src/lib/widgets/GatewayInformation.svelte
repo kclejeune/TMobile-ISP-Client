@@ -17,7 +17,7 @@
   ];
 </script>
 
-<WidgetCard title="Gateway Information">
+<WidgetCard title="Gateway">
   <div slot="title">
     <OnlineIndicator {online} />
   </div>

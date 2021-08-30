@@ -85,10 +85,10 @@
     />
   </div>
   <div class="col-auto">
-    <NetworkInformation title="5G Network Information" cellStats={cell5GStats} />
+    <NetworkInformation title="5G Network" cellStats={cell5GStats} />
   </div>
   <div class="col-auto">
-    <NetworkInformation title="LTE Network Information" cellStats={cellLTEStats} />
+    <NetworkInformation title="LTE Network" cellStats={cellLTEStats} />
   </div>
   <div class="col-auto">
     <DeviceInformation {devices} />
