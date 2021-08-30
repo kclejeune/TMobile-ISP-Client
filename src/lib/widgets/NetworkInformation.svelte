@@ -11,14 +11,15 @@
   let statusItems: StatusItem[];
   $: statusItems = [
     { name: 'Band', value: cellStats.Band },
+    { name: 'SNR', value: `${cellStats.SNRCurrent}dB` },
     { name: 'RSRP', value: `${cellStats.RSRPCurrent}dB` },
     { name: 'RSRQ', value: `${cellStats.RSRQCurrent}dB` },
-    { name: 'SNR', value: `${cellStats.SNRCurrent}dB` },
+    { name: 'PCI', value: `${cellStats.PhysicalCellID}` },
   ];
 </script>
 
 <WidgetCard {title}>
-  <div slot="title">
+  <div slot="title" class="align-baseline">
     <ConnectionStrengthIndicator strength={cellStats.RSRPStrengthIndexCurrent} />
   </div>
   <div slot="body">

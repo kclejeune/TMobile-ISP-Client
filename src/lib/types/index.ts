@@ -2,6 +2,8 @@ export enum Endpoint {
   DEFAULT = 'main_web_app.cgi',
   NETWORK = 'fastmile_radio_status_web_app.cgi',
   STATUS = 'dashboard_device_info_status_web_app.cgi',
+  STATISTICS = 'statistics_status_web_app.cgi',
+  RADIO_CONFIG = 'fastmile_statistics_status_web_app.cgi',
 }
 
 export interface DeviceAppStatus {
@@ -137,4 +139,86 @@ export interface NetworkStatusResponse {
   cell_5G_stats_cfg: Cell5GStatsCfg[];
   cell_LTE_stats_cfg: CellLTEStatsCfg[];
   cell_CA_stats_cfg: CellCAStatsCfg[];
+}
+
+export interface LAN {
+  Name: string;
+  Enable: number;
+  BytesSent: number;
+  BytesReceived: number;
+  PacketsSent: number;
+  PacketsReceived: number;
+  ErrorsSent: number;
+  ErrorsReceived: number;
+  UnicastPacketsSent: number;
+  UnicastPacketsReceived: number;
+  DiscardPacketsSent: number;
+  DiscardPacketsReceived: number;
+  MulticastPacketsSent: number;
+  MulticastPacketsReceived: number;
+  BroadcastPacketsSent: number;
+  BroadcastPacketsReceived: number;
+  UnknownProtoPacketsReceived: number;
+}
+
+export interface Service {
+  WanName: string;
+  Enable: number;
+  EthernetBytesSent: number;
+  EthernetBytesReceived: number;
+  EthernetPacketsSent: number;
+  EthernetPacketsReceived: number;
+  MulticastPacketsReceived: number;
+  EthernetErrorsSent: number;
+  EthernetErrorsReceived: number;
+  EthernetDiscardPacketsSent: number;
+  EthernetDiscardPacketsReceived: number;
+}
+
+export interface WAN {
+  Name: string;
+  WANIPConnectionNumberOfEntries: number;
+  WANPPPConnectionNumberOfEntries: number;
+  Service: Service[];
+}
+
+export interface WLAN {
+  Name: string;
+  Enable: number;
+  RadioEnabled: number;
+  Type: string;
+  SSID: string;
+  BytesSent: number;
+  BytesReceived: number;
+  X_ASB_COM_PacketsSent: number;
+  X_ASB_COM_PacketsReceived: number;
+  ErrorsSent: number;
+  ErrorsReceived: number;
+  DiscardPacketsSent: number;
+  DiscardPacketsReceived: number;
+  X_ASB_COM_RxDrops: number;
+  X_ASB_COM_TxDrops: number;
+}
+
+export interface NetworkStatisticsResponse {
+  LAN: LAN[];
+  WAN: WAN[];
+  WLAN: WLAN[];
+}
+
+export interface NetworkCfg {
+  IMEI: string;
+}
+
+export interface SimCfg {
+  Type: string;
+  Status: string;
+  IMSI: string;
+  ICCID: string;
+  MSISDN: string;
+}
+
+export interface RadioStatusResponse {
+  network_cfg: NetworkCfg[];
+  sim_cfg: SimCfg[];
 }

@@ -7,6 +7,7 @@
   export let softwareVersion: string;
   export let hardwareVersion: string;
   export let uptime: string;
+  export let online: boolean;
 
   $: statusItems = [
     { name: 'Serial Number', value: serialNumber },
@@ -18,7 +19,7 @@
 
 <WidgetCard title="Gateway Information">
   <div slot="title">
-    <OnlineIndicator online={true} />
+    <OnlineIndicator {online} />
   </div>
   <div slot="body">
     <StatusList items={statusItems} />

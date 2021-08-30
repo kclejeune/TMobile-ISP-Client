@@ -22,6 +22,7 @@
 
     const cell5GStats: Cell5GStat = network.cell_5G_stats_cfg[0].stat;
     const cellLTEStats: Cell4GStat = network.cell_LTE_stats_cfg[0].stat;
+    const online: boolean = network.connection_status[0].ConnectionStatus === 1;
 
     return {
       props: {
@@ -29,6 +30,7 @@
         devices: devices,
         cell5GStats: cell5GStats as CellRadioStat,
         cellLTEStats: cellLTEStats as CellRadioStat,
+        online: online,
       },
     };
   }
@@ -59,6 +61,7 @@
   export let devices: DeviceCfg[];
   export let cell5GStats: CellRadioStat;
   export let cellLTEStats: CellRadioStat;
+  export let online: boolean;
 
   const uptimeInterval = setInterval(() => {
     routerCfg.UpTime++;
@@ -71,9 +74,10 @@
 
 <H1>Overview</H1>
 
-<div class="grid gap-4 m-4 md:grid-cols-2 xl:grid-cols-4">
+<div class="grid gap-4 m-4 md:grid-cols-2 lg:grid-cols-3">
   <div class="col-auto">
     <GatewayInformation
+      {online}
       softwareVersion={routerCfg.SoftwareVersion}
       hardwareVersion={routerCfg.HardwareVersion}
       serialNumber={routerCfg.SerialNumber}

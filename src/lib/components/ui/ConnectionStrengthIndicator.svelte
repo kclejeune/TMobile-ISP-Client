@@ -11,7 +11,7 @@
     <span
       class="indicator-item indicator-middle indicator-center badge {size} {item < strength
         ? 'bg-success'
-        : 'bg-base-100'}"
+        : 'bg-base-300'}"
     />
   {/each}
 </span>
