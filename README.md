@@ -30,6 +30,23 @@ npm run build
 
 To run in production, run `node ./build`
 
+## Docker
+
+To run the containerized version of this app, build the docker
+image with
+
+```bash
+docker build --pull --rm -f "Dockerfile" -t tmobile:latest .
+```
+
+and run the container with
+
+```bash
+docker run -p 3000:3000 -it tmobile:latest
+```
+
+You can access the app on `localhost:3000`.
+
 ## Screenshots
 
 ### Desktop
