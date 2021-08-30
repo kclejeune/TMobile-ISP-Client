@@ -1,0 +1,25 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.3.0
+        with:
+          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
+          node-version: 16.x
+          # Used to specify a package manager for caching in the default directory. Supported values: npm, yarn, pnpm
+          cache: npm
+      - name: Install Dependencies
+        run: npm ci
+      - name: Build Project
+        run: npm run build
