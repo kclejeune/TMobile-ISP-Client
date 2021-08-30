@@ -22,7 +22,9 @@
 
     const cell5GStats: Cell5GStat = network.cell_5G_stats_cfg[0].stat;
     const cellLTEStats: Cell4GStat = network.cell_LTE_stats_cfg[0].stat;
-    const online: boolean = network.connection_status[0].ConnectionStatus === 1;
+    const online: boolean = network.connection_status
+      ? network.connection_status[0].ConnectionStatus === 1
+      : undefined;
 
     return {
       props: {
