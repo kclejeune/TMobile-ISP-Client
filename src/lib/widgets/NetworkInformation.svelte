@@ -5,6 +5,7 @@
   import WidgetCard from '$lib/components/ui/WidgetCard.svelte';
   import type { Cell4GStat, Cell5GStat, CellRadioStat } from '$lib/types';
   import ConnectionStrengthIndicator from '$lib/components/ui/ConnectionStrengthIndicator.svelte';
+  import Alert from '$lib/components/ui/Alert.svelte';
 
   export let cellStats: CellRadioStat;
   export let title: string;
@@ -16,6 +17,16 @@
     { name: 'RSRQ', value: `${cellStats.RSRQCurrent}dB` },
     { name: 'PCI', value: `${cellStats.PhysicalCellID}` },
   ];
+
+  const OFFLINE_SIGNAL_VALUE = -32768;
+  export let online: boolean = false;
+  $: offline =
+    cellStats.RSRPStrengthIndexCurrent === 0 &&
+    cellStats.Band === '' &&
+    cellStats.SNRCurrent === OFFLINE_SIGNAL_VALUE &&
+    cellStats.RSRPCurrent === OFFLINE_SIGNAL_VALUE &&
+    cellStats.RSRQCurrent === OFFLINE_SIGNAL_VALUE;
+  $: online = !offline;
 </script>
 
 <WidgetCard {title}>
@@ -23,6 +34,10 @@
     <ConnectionStrengthIndicator strength={cellStats.RSRPStrengthIndexCurrent} />
   </div>
   <div slot="body">
-    <StatusList items={statusItems} />
+    {#if !offline}
+      <StatusList items={statusItems} />
+    {:else}
+      <Alert type="alert-error" msg="Not Connected" />
+    {/if}
   </div>
 </WidgetCard>

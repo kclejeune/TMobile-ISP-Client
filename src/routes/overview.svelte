@@ -65,6 +65,8 @@
   export let cell5GStats: CellRadioStat;
   export let cellLTEStats: CellRadioStat;
   export let online: boolean;
+  let cellLTEOnline: boolean;
+  let cell5GOnline: boolean;
 
   const uptimeInterval = setInterval(() => {
     routerCfg.UpTime++;
@@ -80,7 +82,7 @@
 <div class="grid gap-4 m-4 md:grid-cols-2 lg:grid-cols-3">
   <div class="col-auto">
     <GatewayInformation
-      {online}
+      online={online ?? (cell5GOnline || cellLTEOnline)}
       softwareVersion={routerCfg.SoftwareVersion}
       hardwareVersion={routerCfg.HardwareVersion}
       serialNumber={routerCfg.SerialNumber}
@@ -88,10 +90,10 @@
     />
   </div>
   <div class="col-auto">
-    <NetworkInformation title="5G Network" cellStats={cell5GStats} />
+    <NetworkInformation title="5G Network" cellStats={cell5GStats} bind:online={cell5GOnline} />
   </div>
   <div class="col-auto">
-    <NetworkInformation title="LTE Network" cellStats={cellLTEStats} />
+    <NetworkInformation title="LTE Network" cellStats={cellLTEStats} bind:online={cellLTEOnline} />
   </div>
   <div class="col-auto">
     <DeviceInformation {devices} />
