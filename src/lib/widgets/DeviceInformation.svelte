@@ -32,6 +32,6 @@
     <StatusList items={statusItems} />
   </div>
   <div slot="actions">
-      <a sveltekit:prefetch href="/devices" class="btn btn-primary">View Devices</a>
+    <a sveltekit:prefetch href="/devices" class="btn btn-primary">View Devices</a>
   </div>
 </WidgetCard>

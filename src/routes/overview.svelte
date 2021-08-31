@@ -86,7 +86,7 @@
   });
 </script>
 
-<H1>Overview <button class="btn loading btn-circle btn-lg bg-base-200 btn-ghost"></button></H1>
+<H1>Overview <button class="btn loading btn-circle btn-lg bg-base-200 btn-ghost" /></H1>
 
 <div class="grid gap-4 m-4 md:grid-cols-2 lg:grid-cols-3">
   <div class="col-auto">
