@@ -36,13 +36,13 @@ To run the containerized version of this app, build the docker
 image with
 
 ```bash
-docker build --pull --rm -f "Dockerfile" -t tmobile:latest .
+docker build --pull -t tmobile:latest .
 ```
 
 and run the container with
 
 ```bash
-docker run -p 3000:3000 -it tmobile:latest
+docker run --rm -p 3000:3000 -it tmobile:latest
 ```
 
 You can access the app on `localhost:3000`.
