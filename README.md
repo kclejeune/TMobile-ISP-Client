@@ -4,7 +4,7 @@ T-Mobile's trashcan web client is...garbage, so I'm building my own with SvelteK
 
 Currently implemented:
 
-- overview page
+- overview page w/ live updating (refreshes every 5s)
 - list of device information
 
 ## Developing
