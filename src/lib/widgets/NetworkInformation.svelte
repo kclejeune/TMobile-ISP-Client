@@ -8,7 +8,7 @@
   import Alert from '$lib/components/ui/Alert.svelte';
 
   export let cellStats: CellRadioStat;
-  export let title: string;
+  export let title: string = '';
   let statusItems: StatusItem[];
   $: statusItems = [
     { name: 'Band', value: cellStats.Band },

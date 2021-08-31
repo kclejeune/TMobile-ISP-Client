@@ -13,6 +13,7 @@
   </li>
   {#each options as option}
     <li on:click={() => (selected = option)}>
+      <!-- svelte-ignore a11y-missing-attribute -->
       <a class="rounded-lg {selected === option ? 'bg-primary' : ''}">{displayWith(option)}</a>
     </li>
   {/each}

@@ -15,6 +15,7 @@
   <ul tabindex="0" class="p-2 shadow menu dropdown-content bg-base-100 rounded-box w-52">
     {#each options as option}
       <li on:click={() => (selected = option)}>
+        <!-- svelte-ignore a11y-missing-attribute -->
         <a>{displayWith(option)}</a>
       </li>
     {/each}
