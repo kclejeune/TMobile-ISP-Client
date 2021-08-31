@@ -9,7 +9,8 @@
     Cell5GStat,
     CellRadioStat,
   } from '$lib/types';
-  export async function load({ fetch }) {
+  export async function load({ fetch, session }) {
+    session['refresh'] = '0';
     const status: StatusResponse = await fetch(`/api/${Endpoint.STATUS}`).then((res: Response) =>
       res.json(),
     );
@@ -58,7 +59,11 @@
   import H1 from '$lib/components/ui/H1.svelte';
   import DeviceInformation from '$lib/widgets/DeviceInformation.svelte';
   import NetworkInformation from '$lib/widgets/NetworkInformation.svelte';
-  import { onDestroy } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
+  import { page, session } from '$app/stores';
+  import Toggle from '$lib/components/ui/Toggle.svelte';
+  import Dropdown from '$lib/components/ui/Dropdown.svelte';
+  import Menu from '$lib/components/ui/Menu.svelte';
 
   export let routerCfg: DeviceAppStatus;
   export let devices: DeviceCfg[];
@@ -72,12 +77,16 @@
     routerCfg.UpTime++;
   }, 1000);
 
+  let refreshInterval = setInterval(() => {
+    $session['refresh'] = `${routerCfg.UpTime}`;
+  }, 5000);
   onDestroy(() => {
     clearInterval(uptimeInterval);
+    clearInterval(refreshInterval);
   });
 </script>
 
-<H1>Overview</H1>
+<H1>Overview <button class="btn loading btn-circle btn-lg bg-base-200 btn-ghost"></button></H1>
 
 <div class="grid gap-4 m-4 md:grid-cols-2 lg:grid-cols-3">
   <div class="col-auto">
