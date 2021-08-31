@@ -4,6 +4,7 @@ export enum Endpoint {
   STATUS = 'dashboard_device_info_status_web_app.cgi',
   STATISTICS = 'statistics_status_web_app.cgi',
   RADIO_CONFIG = 'fastmile_statistics_status_web_app.cgi',
+  REBOOT = 'reboot_web_app.cgi',
 }
 
 export interface DeviceAppStatus {
