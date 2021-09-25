@@ -73,7 +73,7 @@ export interface ApnCfg {
   X_ALU_COM_IPAddressV6: string;
 }
 
-export interface CellularStat {
+export interface UsageStats {
   BytesReceived: number;
   BytesSent: number;
 }
@@ -135,7 +135,7 @@ export interface CellCAStatsCfg {
 export interface NetworkStatusResponse {
   connection_status: ConnectionStatus[];
   apn_cfg: ApnCfg[];
-  cellular_stats: CellularStat[];
+  cellular_stats: UsageStats[];
   ethernet_stats: EthernetStat[];
   cell_5G_stats_cfg: Cell5GStatsCfg[];
   cell_LTE_stats_cfg: CellLTEStatsCfg[];

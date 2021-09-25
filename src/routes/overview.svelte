@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { Endpoint } from '$lib/types';
+  import { Endpoint, UsageStats } from '$lib/types';
   import type {
     DeviceAppStatus,
     StatusResponse,
@@ -10,7 +10,6 @@
     CellRadioStat,
   } from '$lib/types';
   export async function load({ fetch, session }) {
-    session['refresh'] = '0';
     const status: StatusResponse = await fetch(`/api/${Endpoint.STATUS}`).then((res: Response) =>
       res.json(),
     );
@@ -27,6 +26,7 @@
       network?.connection_status?.length > 0
         ? network.connection_status[0].ConnectionStatus === 1
         : undefined;
+    const usageStats = network.cellular_stats[0];
 
     return {
       props: {
@@ -35,6 +35,7 @@
         cell5GStats: cell5GStats as CellRadioStat,
         cellLTEStats: cellLTEStats as CellRadioStat,
         online: online,
+        usage: usageStats,
       },
     };
   }
@@ -60,16 +61,14 @@
   import DeviceInformation from '$lib/widgets/DeviceInformation.svelte';
   import NetworkInformation from '$lib/widgets/NetworkInformation.svelte';
   import { onDestroy, onMount } from 'svelte';
-  import { page, session } from '$app/stores';
-  import Toggle from '$lib/components/ui/Toggle.svelte';
-  import Dropdown from '$lib/components/ui/Dropdown.svelte';
-  import Menu from '$lib/components/ui/Menu.svelte';
-
+  import { session } from '$app/stores';
+  import UsageInformation from '$lib/widgets/UsageInformation.svelte';
   export let routerCfg: DeviceAppStatus;
   export let devices: DeviceCfg[];
   export let cell5GStats: CellRadioStat;
   export let cellLTEStats: CellRadioStat;
   export let online: boolean;
+  export let usage: UsageStats;
   let cellLTEOnline: boolean;
   let cell5GOnline: boolean;
 
@@ -77,9 +76,13 @@
     routerCfg.UpTime++;
   }, 1000);
 
-  let refreshInterval = setInterval(() => {
-    $session['refresh'] = `${routerCfg.UpTime}`;
-  }, 5000);
+  let refreshInterval: NodeJS.Timer;
+  onMount(() => {
+    refreshInterval = setInterval(() => {
+      $session['refresh'] = `${routerCfg.UpTime}`;
+    }, 5000);
+  });
+
   onDestroy(() => {
     clearInterval(uptimeInterval);
     clearInterval(refreshInterval);
@@ -103,6 +106,9 @@
   </div>
   <div class="col-auto">
     <NetworkInformation title="LTE Network" cellStats={cellLTEStats} bind:online={cellLTEOnline} />
+  </div>
+  <div class="col-auto">
+    <UsageInformation title="Data Usage" {usage} bind:online />
   </div>
   <div class="col-auto">
     <DeviceInformation {devices} />
