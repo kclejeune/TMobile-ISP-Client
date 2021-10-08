@@ -1,6 +1,8 @@
 {
   "name": "tmo-isp-client",
-  "version": "0.0.1",
+  "repository": "https://github.com/kclejeune/TMobile-ISP-Client.git",
+  "license": "MIT",
+  "version": "0.1.0",
   "scripts": {
     "dev": "svelte-kit dev",
     "build": "svelte-kit build",
