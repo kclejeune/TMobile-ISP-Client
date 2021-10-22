@@ -9,16 +9,16 @@ Currently implemented:
 
 ## Running the app
 
-### Docker 
+### Docker
 
-The easiest way to setup and run the app with minimal development knowledge is to use [Docker](https://www.docker.com/get-started). 
+The easiest way to setup and run the app with minimal development knowledge is to use [Docker](https://www.docker.com/get-started).
 Follow the installation instructions from the website, and then run:
 
 ```bash
-docker pull kclejeune/tmobile-isp-client:latest && docker run -p 3000:3000 -it kclejeune/tmobile-isp-client:latest
+docker pull kclejeune/tmobile-isp-client:latest && docker run --restart unless-stopped -p 3000:3000 -it kclejeune/tmobile-isp-client:latest
 ```
 
-You can view the app on `http://localhost:3000`. To run on a different port, set the `PORT` environment variable 
+You can view the app on `http://localhost:3000`. To run on a different port, set the `PORT` environment variable
 and pass it to the container with the following command:
 
 ```bash
