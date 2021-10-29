@@ -3,3 +3,10 @@ node_modules
 /build
 /.svelte-kit
 /package
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

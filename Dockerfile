@@ -1,11 +1,11 @@
 FROM node:lts-alpine AS build
 WORKDIR /app
-COPY package*.json .
-RUN npm ci --no-audit
+COPY package.json yarn.lock .yarnrc.yml .
+COPY .yarn/ .yarn/
+RUN yarn install --immutable --check-cache
 
 COPY . .
-RUN npm run build
-RUN npm ci --production --no-audit
+RUN yarn build && yarn workspaces focus --all --production
 
 FROM node:lts-alpine AS deploy
 WORKDIR /app
