@@ -15,28 +15,29 @@ The easiest way to setup and run the app with minimal development knowledge is t
 Follow the installation instructions from the website, and then run:
 
 ```bash
-docker pull kclejeune/tmobile-isp-client:latest && docker run --restart unless-stopped -p 3000:3000 -it kclejeune/tmobile-isp-client:latest
+export PORT=33201
+docker pull kclejeune/tmobile-isp-client:latest
+docker run --restart unless-stopped -e PORT -p $PORT:$PORT -it kclejeune/tmobile-isp-client:latest
 ```
 
-You can view the app on `http://localhost:3000`. To run on a different port, set the `PORT` environment variable
-and pass it to the container with the following command:
-
-```bash
-export PORT=43210
-docker pull kclejeune/tmobile-isp-client:latest && docker run -e PORT -p $PORT:$PORT -it kclejeune/tmobile-isp-client:latest
-```
-
-substituting `PORT=43210` for the actual port of your choice.
+You can view the app on `http://localhost:$PORT`. To run on a different port, set the `PORT` environment variable accordingly.
 
 ## Developing
 
-Clone the project, install dependencies with `npm install` (or `pnpm install` or `yarn`), and then start a development server with:
+### Prerequisites
+
+Clone the project, install yarn with `npm install -g yarn`, and then install
+dependencies with `yarn install`.
+
+### Dev Server
+
+To start the dev server (with live reloading and hot module swapping), run:
 
 ```bash
-npm run dev -- --host
+yarn dev -- --host
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+yarn dev -- --open
 ```
 
 ### Building
@@ -44,10 +45,10 @@ npm run dev -- --open
 This app uses the node adapter to enable server side rendering and reverse proxying to avoid CORS issues. Build for production with:
 
 ```bash
-npm run build
+yarn build
 ```
 
-> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+> You can preview the built app with `yarn preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
 
 To run in production, run `node ./build`
 
