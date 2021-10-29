@@ -23,9 +23,7 @@ jobs:
             kclejeune/tmobile-isp-client
             ghcr.io/kclejeune/tmobile-isp-client
           tags: |
-            # the latest commit
             type=edge
-            # the latest tagged verison
             type=semver,pattern={{version}}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
