@@ -13,26 +13,26 @@
     "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.51",
+    "@sveltejs/adapter-node": "^1.0.0-next.55",
     "@sveltejs/kit": "next",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "autoprefixer": "^10.3.5",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "autoprefixer": "^10.4.0",
     "cssnano": "^5.0.6",
-    "daisyui": "^1.14.1",
+    "daisyui": "^1.16.0",
     "eslint": "^7.22.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.2.1",
-    "postcss": "^8.3.8",
+    "postcss": "^8.3.11",
     "postcss-load-config": "^3.1.0",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "svelte": "^3.43.0",
-    "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.9.5",
-    "tailwindcss": "^2.2.15",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.9.8",
+    "tailwindcss": "^2.2.17",
     "tslib": "^2.0.0",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   },
   "type": "module"
 }
