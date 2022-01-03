@@ -1,0 +1,10 @@
+version: "3"
+services:
+  app:
+    image: "kclejeune/tmobile-isp-client:${TAG}"
+    build: .
+    restart: "unless-stopped"
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      PORT: "${PORT}"

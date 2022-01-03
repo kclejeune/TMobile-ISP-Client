@@ -15,29 +15,32 @@ The easiest way to setup and run the app with minimal development knowledge is t
 Follow the installation instructions from the website, and then run:
 
 ```bash
-export PORT=33201
-docker pull kclejeune/tmobile-isp-client:latest
-docker run --restart unless-stopped -e PORT -p $PORT:$PORT -it kclejeune/tmobile-isp-client:latest
+docker-compose up
 ```
 
-You can view the app on `http://localhost:$PORT`. To run on a different port, set the `PORT` environment variable accordingly.
+You can view the app on `http://localhost:33201`, which is set
+according to a default value for `PORT=33201` since
+port 3000 tends to conflict with too many other things.
+
+To run on a different port, set the `PORT` environment variable or set it in `.env`.
+By default, this will pull the tagged `latest` image from Docker Hub. To override
+this, set the `TAG` environment variable or modify it in `.env`.
 
 ## Developing
 
 ### Prerequisites
 
-Clone the project, install yarn with `npm install -g yarn`, and then install
-dependencies with `yarn install`.
+Clone the project, then install dependencies with `npm install`.
 
 ### Dev Server
 
 To start the dev server (with live reloading and hot module swapping), run:
 
 ```bash
-yarn dev -- --host
+npm run dev -- --host
 
 # or start the server and open the app in a new browser tab
-yarn dev -- --open
+npm run dev -- --open
 ```
 
 ### Building
@@ -45,12 +48,19 @@ yarn dev -- --open
 This app uses the node adapter to enable server side rendering and reverse proxying to avoid CORS issues. Build for production with:
 
 ```bash
-yarn build
+npm run build
 ```
 
-> You can preview the built app with `yarn preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+To build the docker image, run
 
-To run in production, run `node ./build`
+```bash
+docker-compose build
+```
+
+> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
+
+To run in production, run `node ./build`, or `docker-compose up` as referenced
+previously.
 
 ## Screenshots
 
