@@ -1,5 +1,8 @@
 # T-Mobile ISP Client
 
+[![CI](https://github.com/kclejeune/TMobile-ISP-Client/actions/workflows/ci.yml/badge.svg)](https://github.com/kclejeune/TMobile-ISP-Client/actions/workflows/ci.yml)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/kclejeune/TMobile-ISP-Client/master.svg)](https://results.pre-commit.ci/latest/github/kclejeune/TMobile-ISP-Client/master)
+
 T-Mobile's trashcan web client is...garbage, so I'm building my own with SvelteKit. Feel free to use it or contribute!
 
 Currently implemented:
