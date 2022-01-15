@@ -5,15 +5,13 @@
 
   export let title = 'T-Mobile ISP';
   export let pages: string[] = ['Overview', 'Devices'];
-  export let routes: Route[] = pages.map(
-    (page): Route => {
-      return {
-        path: `/${page.toLowerCase().replace(/\s/g, '-')}`,
-        id: page.toLowerCase().replace(/\s/g, '-'),
-        title: page,
-      };
-    },
-  );
+  export let routes: Route[] = pages.map((page): Route => {
+    return {
+      path: `/${page.toLowerCase().replace(/\s/g, '-')}`,
+      id: page.toLowerCase().replace(/\s/g, '-'),
+      title: page,
+    };
+  });
 </script>
 
 <svelte:head>

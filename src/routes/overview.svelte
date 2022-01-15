@@ -16,9 +16,9 @@
     const routerCfg = status.device_app_status[0] as DeviceAppStatus;
     const devices: DeviceCfg[] = status.device_cfg;
 
-    const network: NetworkStatusResponse = await fetch(
-      `/api/${Endpoint.NETWORK}`,
-    ).then((res: Response) => res.json());
+    const network: NetworkStatusResponse = await fetch(`/api/${Endpoint.NETWORK}`).then(
+      (res: Response) => res.json(),
+    );
 
     const cell5GStats: Cell5GStat = network.cell_5G_stats_cfg[0].stat;
     const cellLTEStats: Cell4GStat = network.cell_LTE_stats_cfg[0].stat;
