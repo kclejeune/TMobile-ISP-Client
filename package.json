@@ -14,8 +14,8 @@
     "upgrade": "npm-check-updates -u && npm install"
   },
   "devDependencies": {
-    "@sveltejs/adapter-node": "^1.0.0-next.0",
-    "@sveltejs/kit": "^1.0.0-next.1",
+    "@sveltejs/adapter-node": "^1.0.0-next.61",
+    "@sveltejs/kit": "^1.0.0-next.231",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "autoprefixer": "^10.4.1",
