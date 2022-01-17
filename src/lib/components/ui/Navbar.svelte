@@ -12,7 +12,7 @@
   export let title: string = '';
   export let routes: Route[] = [];
   let open = false;
-  $: currentPage = routes.find((r) => r.path === $page.path);
+  $: currentPage = routes.find((r) => r.path === $page.url.pathname);
 </script>
 
 <div class="z-50 h-full shadow drawer drawer-mobile">
@@ -77,7 +77,7 @@
             }}
             sveltekit:prefetch
             href={route.path}
-            class="rounded-btn {route.path === $page.path ? 'bg-base-300' : ''}"
+            class="rounded-btn {route.path === $page.url.pathname ? 'bg-base-300' : ''}"
           >
             {route.title}
           </a>
